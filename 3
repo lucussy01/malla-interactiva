@@ -1,0 +1,35 @@
+const cursos = [
+  {
+    codigo: "MA0101",
+    nombre: "Introducción al Cálculo",
+    creditos: 6,
+    prerrequisitos: [],
+  },
+  {
+    codigo: "MA0102",
+    nombre: "Cálculo Diferencial e Integral",
+    creditos: 6,
+    prerrequisitos: ["MA0101"],
+  },
+  {
+    codigo: "MA2001",
+    nombre: "Cálculo en Varias Variables",
+    creditos: 6,
+    prerrequisitos: ["MA0102"],
+  },
+  // Agrega más cursos aquí...
+];
+
+const container = document.getElementById("malla-container");
+
+cursos.forEach(curso => {
+  const div = document.createElement("div");
+  div.className = "curso";
+  div.innerHTML = `
+    <h3>${curso.codigo}</h3>
+    <p>${curso.nombre}</p>
+    <p><strong>Créditos:</strong> ${curso.creditos}</p>
+    <p><strong>Prerrequisitos:</strong> ${curso.prerrequisitos.join(", ") || "Ninguno"}</p>
+  `;
+  container.appendChild(div);
+});
